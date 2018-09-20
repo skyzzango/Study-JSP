@@ -50,34 +50,41 @@
 			<tbody>
 			<% for (Content content : list) { %>
 			<tr>
-				<td><%=content.getContentNum()%></td>
+				<td><%=content.getContentNum()%>
+				</td>
 				<td>
-					<a href="/board/boardView.jsp?contentNum=<%=content.getContentNum()%>">
+					<a href="${pageContext.request.contextPath}/board/boardView.jsp?contentNum=<%=content.getContentNum()%>">
 						<%=content.getContentTitle()%>
 					</a>
 				</td>
-				<td><%=content.getContentUser()%></td>
+				<td><%=content.getContentUser()%>
+				</td>
 				<td><%=
-					content.getContentDate().substring(0, 11) +
-					content.getContentDate().substring(11, 13) + "시 " +
-					content.getContentDate().substring(14, 16) + "분"
-				%></td>
+				content.getContentDate().substring(0, 11) +
+						content.getContentDate().substring(11, 13) + "시 " +
+						content.getContentDate().substring(14, 16) + "분"
+				%>
+				</td>
 			</tr>
 			<% } %>
 			</tbody>
 		</table>
 		<% if (pageNumber != 1) { %>
-			<a href="/board/?pageNumber=<%=pageNumber - 1%>" class="btn btn-success btn-arraw-left">이전</a>
+		<a href="${pageContext.request.contextPath}/board/?pageNumber=<%=pageNumber - 1%>"
+		   class="btn btn-success btn-arraw-left">이전</a>
 		<% } else { %>
-			<a href="/board/?pageNumber=<%=pageNumber - 1%>" class="btn btn-success btn-arraw-left disabled">이전</a>
+		<a href="${pageContext.request.contextPath}/board/?pageNumber=<%=pageNumber - 1%>"
+		   class="btn btn-success btn-arraw-left disabled">이전</a>
 		<% } %>
 
 		<% if (contentDAO.nextPage(pageNumber + 1)) { %>
-			<a href="/board/?pageNumber=<%=pageNumber + 1%>" class="btn btn-success btn-arraw-left">다음</a>
+		<a href="${pageContext.request.contextPath}/board/?pageNumber=<%=pageNumber + 1%>"
+		   class="btn btn-success btn-arraw-left">다음</a>
 		<% } else { %>
-			<a href="/board/?pageNumber=<%=pageNumber + 1%>" class="btn btn-success btn-arraw-left disabled">다음</a>
+		<a href="${pageContext.request.contextPath}/board/?pageNumber=<%=pageNumber + 1%>"
+		   class="btn btn-success btn-arraw-left disabled">다음</a>
 		<% } %>
-		<a href="boardWrite.jsp" class="btn btn-primary pull-right">글쓰기</a>
+		<a href="${pageContext.request.contextPath}/board/boardWrite.jsp" class="btn btn-primary pull-right">글쓰기</a>
 	</div>
 
 

@@ -11,8 +11,7 @@ import java.util.List;
 
 public class ContentDAO {
 
-	private ContentDAO() {
-	}
+	private ContentDAO() { }
 
 	private static class LazyHolder {
 		static final ContentDAO INSTANCE = new ContentDAO();
@@ -77,10 +76,7 @@ public class ContentDAO {
 
 	public List<Content> getList(int pageNumber) {
 		List<Content> list = new ArrayList<>();
-		String sql = "SELECT * FROM content " +
-				"WHERE contentNum < ? " +
-				"ORDER BY contentNum DESC " +
-				"LIMIT 10";
+		String sql = "SELECT * FROM content WHERE contentNum < ? ORDER BY contentNum DESC LIMIT 10";
 
 		try (
 				Connection conn = ConnUtil.getConnection();
@@ -140,6 +136,38 @@ public class ContentDAO {
 			System.out.println("Error: board.ContentDAO.getContent Failed (" + e.getMessage() + ")");
 		}
 		return null;
+	}
+
+	public int contentUpdate(int contentNum, String contentTitle, String contentDetail) {
+		String sql = "UPDATE content SET contentTitle = ?, contentDetail = ? WHERE contentNum = ?";
+
+		try (
+				Connection conn = ConnUtil.getConnection();
+				PreparedStatement pstmt = conn.prepareStatement(sql);
+		) {
+			pstmt.setString(1, contentTitle);
+			pstmt.setString(2, contentDetail);
+			pstmt.setInt(3, contentNum);
+			pstmt.executeUpdate();
+			return 1;
+		} catch (Exception e) {
+			System.out.println("Error: board.ContentDAO.contentUpdate Failed (" + e.getMessage() + ")");
+		}
+		return -1;
+	}
+
+	public int contentDelete(int contentNum) {
+		String sql = "DELETE FROM content WHERE contentNum = ?";
+
+		try (
+				Connection conn = ConnUtil.getConnection();
+				PreparedStatement pstmt = setPreparedStatement(conn, sql, contentNum)
+		) {
+			return pstmt.executeUpdate();
+		} catch (Exception e) {
+			System.out.println("Error: board.ContentDAO.contentDelete Failed (" + e.getMessage() + ")");
+		}
+		return -1;
 	}
 
 	private PreparedStatement setPreparedStatement(Connection conn, String sql, Object status) throws SQLException {

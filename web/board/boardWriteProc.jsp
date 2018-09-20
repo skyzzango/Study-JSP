@@ -34,6 +34,7 @@
 	}
 %>
 
+
 <html lang="ko">
 <head>
 	<%@include file="/partials/head.jsp" %>

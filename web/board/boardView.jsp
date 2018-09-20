@@ -8,6 +8,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+<% request.setCharacterEncoding("UTF-8"); %>
 
 <%
 	String userId = null;
@@ -21,7 +22,7 @@
 	if (contentNum == 0) {
 		PrintWriter script = response.getWriter();
 		script.println("<script>alert('유효하지 않는 게시물입니다')</script>");
-		script.println("<script>location.href = 'content.jsp'</script>");
+		script.println("<script>location.href = '/board/'</script>");
 	}
 	Content content = ContentDAO.getInstance().getContent(contentNum);
 %>
@@ -57,7 +58,7 @@
 					<td><%= content.getContentDate().substring(0, 11) + content.getContentDate().substring(11, 13) + "시 " + content.getContentDate().substring(14, 16) + "분 " %></td>
 				</tr>
 				<tr>
-					<td>글 내용</td>
+					<td style="height: 400px">글 내용</td>
 					<!-- 출력 시 공백이나 < > 줄바꿈 우리 눈에 보여주기 하기 위해서(html 태그로 인식해서 안되기 때매) -->
 					<td><%= content.getContentDetail().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br>") %></td>
 				</tr>
@@ -65,10 +66,10 @@
 		</table>
 
 		<!-- 목록으로 돌아가기와 작성자이면 수정할 수 있게 하기 -->
-		<a href = "/board/" class="btn btn-primary">목록</a>
+		<a href = "${pageContext.request.contextPath}/board/" class="btn btn-primary">목록</a>
 		<% if (userId != null && userId.equals(content.getContentUser())) { %>
-		<a href="contentUpdate.jsp?contentNum=<%=contentNum %>" class="btn btn-primary">수정</a>
-		<a href="contentDelete.jsp?contentNum=<%=contentNum %>" class="btn btn-primary">삭제</a>
+		<a href="${pageContext.request.contextPath}/board/boardUpdate.jsp?contentNum=<%=contentNum %>" class="btn btn-info">수정</a>
+		<a onclick="return confirm('정말로 삭제 하시겠습니까?')" href="boardDeleteProc.jsp?contentNum=<%=contentNum %>" class="btn btn-danger">삭제</a>
 		<% } %>
 	</div>
 

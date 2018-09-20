@@ -49,7 +49,6 @@ public class UserDAO {
 	}
 
 	public int register(UserVo userVo) {
-		System.out.println("Run: user.UserDAO.register");
 		String sql = "INSERT INTO user VALUES(?, ?, ?)";
 
 		try (
