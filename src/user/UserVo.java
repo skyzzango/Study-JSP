@@ -4,7 +4,6 @@ package user;
 public class UserVo {
 	private String userId;
 	private String userPw;
-	private String userGender;
 	private String userName;
 
 	public String getUserId() {
@@ -23,19 +22,20 @@ public class UserVo {
 		this.userPw = userPw;
 	}
 
-	public String getUserGender() {
-		return userGender;
-	}
-
-	public void setUserGender(String userGender) {
-		this.userGender = userGender;
-	}
-
 	public String getUserName() {
 		return userName;
 	}
 
 	public void setUserName(String userName) {
 		this.userName = userName;
+	}
+
+	@Override
+	public String toString() {
+		return "UserVo{" +
+				"userId='" + userId + '\'' +
+				", userPw='" + userPw + '\'' +
+				", userName='" + userName + '\'' +
+				'}';
 	}
 }
