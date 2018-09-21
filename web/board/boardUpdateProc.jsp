@@ -1,6 +1,7 @@
-<%@ page import="board.Content" %>
-<%@ page import="board.ContentDAO" %>
-<%@ page import="java.io.PrintWriter" %><%--
+<%@ page import="board.BoardDTO" %>
+<%@ page import="board.BoardDAO" %>
+<%@ page import="java.io.PrintWriter" %>
+<%--
   Created by IntelliJ IDEA.
   User: skyzz
   Date: 2018-09-21
@@ -26,15 +27,15 @@
 	}
 	if (contentNum == 0) {
 		script.println("<script>alert('유효하지 않는 게시물입니다')</script>");
-		script.println("<script>location.href = 'content.jsp'</script>");
+		script.println("<script>location.href = 'boardDTO.jsp'</script>");
 	}
-	Content content = ContentDAO.getInstance().getContent(contentNum);
+	BoardDTO boardDTO = BoardDAO.getInstance().getContent(contentNum);
 	if (request.getParameter("contentTitle") == null || request.getParameter("contentDetail") == null || request.getParameter("contentTitle").equals("") || request.getParameter("contentDetail").equals("")) {
 		script.println("<script>alert('입력이 안 된 부분이 있습니다')</script>");
 		script.println("<script>history.back()</script>");
 	} else {
-		ContentDAO contentDao = ContentDAO.getInstance();
-		int result = contentDao.contentUpdate(contentNum, request.getParameter("contentTitle"), request.getParameter("contentDetail"));
+		BoardDAO boardDao = BoardDAO.getInstance();
+		int result = boardDao.contentUpdate(contentNum, request.getParameter("contentTitle"), request.getParameter("contentDetail"));
 		if (result == -1) {
 			script.println("<script>alert('글 수정에 실패하였습니다')</script>");
 			script.println("<script>history.back()</script>");

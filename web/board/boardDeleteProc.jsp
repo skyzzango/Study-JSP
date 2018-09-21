@@ -1,4 +1,4 @@
-<%@ page import="board.ContentDAO" %>
+<%@ page import="board.BoardDAO" %>
 <%@ page import="java.io.PrintWriter" %><%--
   Created by IntelliJ IDEA.
   User: skyzz
@@ -33,8 +33,8 @@
 		script.println("<script>location.href = '/board/'</script>");
 	}
 
-	ContentDAO contentDAO = ContentDAO.getInstance();
-	int result = contentDAO.contentDelete(contentNum);
+	BoardDAO boardDAO = BoardDAO.getInstance();
+	int result = boardDAO.contentDelete(contentNum);
 	if (result == -1) {
 		script.println("<script>alert('글 삭제에 실패하였습니다')</script>");
 		script.println("<script>history.back()</script>");

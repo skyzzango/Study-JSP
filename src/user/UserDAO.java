@@ -45,7 +45,7 @@ public class UserDAO {
 		} catch (Exception e) {
 			System.out.println("Error: user.UserDAO.login Failed (" + e.getMessage() + ")");
 		}
-		return -2; // DB 작동 오류
+		return -1; // DB 작동 오류
 	}
 
 	public int register(UserVo userVo) {

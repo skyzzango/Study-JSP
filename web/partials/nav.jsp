@@ -5,6 +5,7 @@
   Time: 오전 10:52
   To change this template use File | Settings | File Templates.
 --%>
+
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
 	<a class="navbar-brand" href="#">Navbar</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
@@ -42,12 +43,13 @@
 			<% } %>
 			<button onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Sign Up</button>
 		</div>
-		<form class="form-inline my-2 my-lg-0">
-			<input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-			<button class="btn btn-outline-success my-2 my-sm-0 disabled" type="submit">Search</button>
+		<form class="form-inline my-2 my-lg-0" action="${pageContext.request.contextPath}/content/searchIndex.jsp" method="get">
+			<input class="form-control mr-sm-2" name="search" type="search" placeholder="Search" aria-label="Search">
+			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 		</form>
 	</div>
 </nav>
+
 <div id="id01" class="modal">
 	<%@include file="/user/loginView.jsp" %>
 </div>

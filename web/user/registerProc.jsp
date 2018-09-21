@@ -23,12 +23,14 @@
 		int result = userDAO.register(user);
 		if (result == 1) {
 			System.out.println("유저 가입: " + user.getUserId());
+			script.println("<script>alert('계정이 등록 되었습니다.')</script>");
 			script.println("<script>location.href = '/'</script>");
 		} else if (result == -1) {
-			script.println("<script>alert('이미 존재하는 아이디 입니다')</script>");
+			script.println("<script>alert('이미 존재하는 아이디 입니다.')</script>");
 			script.println("<script>history.back()</script>");
 		}
 	}
+	script .flush();
 %>
 
 <html lang="ko">

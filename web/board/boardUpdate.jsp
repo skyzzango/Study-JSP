@@ -1,5 +1,5 @@
-<%@ page import="board.Content" %>
-<%@ page import="board.ContentDAO" %>
+<%@ page import="board.BoardDTO" %>
+<%@ page import="board.BoardDAO" %>
 <%@ page import="java.io.PrintWriter" %><%--
   Created by IntelliJ IDEA.
   User: skyzz
@@ -28,7 +28,7 @@
 		script.println("<script>alert('유효하지 않는 게시물입니다')</script>");
 		script.println("<script>location.href = '/board/'</script>");
 	}
-	Content content = ContentDAO.getInstance().getContent(contentNum);
+	BoardDTO boardDTO = BoardDAO.getInstance().getContent(contentNum);
 %>
 
 <html lang="ko">
@@ -53,14 +53,14 @@
 					<%--자신의 글을 수정하려면 이전의 값을 보여줘야하기 때문에 value 에 이전 값을 출력해준다.--%>
 					<td>
 						<input type="text" class="form-control" placeholder="글 제목" name="contentTitle" maxlength="40"
-						       value="<%=content.getContentTitle()%>">
+						       value="<%=boardDTO.getContentTitle()%>">
 					</td>
 				</tr>
 				<tr>
 					<td>
 						<textarea class="form-control" placeholder="글 내용을 작성하세요" name="contentDetail"
 						          maxlength="1024" style="height: 400px;">
-						<%=content.getContentDetail()%>
+						<%=boardDTO.getContentDetail()%>
 					</textarea>
 					</td>
 				</tr>

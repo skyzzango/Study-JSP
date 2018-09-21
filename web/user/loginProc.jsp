@@ -16,7 +16,7 @@
 	PrintWriter script = response.getWriter();
 	UserDAO userDAO = UserDAO.getInstance();
 	int result = userDAO.login(user.getUserId(), user.getUserPw());
-	if( result == 1 ){
+	if (result == 1) {
 		System.out.println("유저 로그인: " + user.getUserId());
 		session.setAttribute("userId", user.getUserId());
 		response.getWriter().println("<script>location.href = '/'</script>");

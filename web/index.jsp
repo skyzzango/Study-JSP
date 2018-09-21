@@ -27,7 +27,9 @@
 		<button onclick="location.href='/user/logoutProc.jsp'" style="width:auto;">Sign Out</button>
 		<% } %>
 		<button onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Sign Up</button>
+
 		<button onclick="location.href='/board/'" style="width:auto;">게시판</button>
+		<button onclick="location.href='/content/'" style="width:auto;">파일 게시판</button>
 
 	</div>
 

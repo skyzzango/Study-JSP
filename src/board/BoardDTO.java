@@ -1,6 +1,6 @@
 package board;
 
-public class Content {
+public class BoardDTO {
 	private int contentNum;
 	private String contentTitle;
 	private String contentUser;
@@ -49,7 +49,7 @@ public class Content {
 
 	@Override
 	public String toString() {
-		return "Content{" +
+		return "BoardDTO{" +
 				"contentNum=" + contentNum +
 				", contentTitle='" + contentTitle + '\'' +
 				", contentUser='" + contentUser + '\'' +

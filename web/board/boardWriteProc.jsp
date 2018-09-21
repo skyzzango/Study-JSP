@@ -1,5 +1,6 @@
-<%@ page import="board.ContentDAO" %>
-<%@ page import="java.io.PrintWriter" %><%--
+<%@ page import="board.BoardDAO" %>
+<%@ page import="java.io.PrintWriter" %>
+<%--
   Created by IntelliJ IDEA.
   User: skyzz
   Date: 2018-09-20
@@ -8,9 +9,9 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <% request.setCharacterEncoding("UTF-8"); %>
-<jsp:useBean id="content" class="board.Content" scope="page"/>
-<jsp:setProperty name="content" property="contentTitle"/>
-<jsp:setProperty name="content" property="contentDetail"/>
+<jsp:useBean id="boardDTO" class="board.BoardDTO" scope="page"/>
+<jsp:setProperty name="boardDTO" property="contentTitle"/>
+<jsp:setProperty name="boardDTO" property="contentDetail"/>
 
 <%
 	String userId = null;
@@ -19,12 +20,12 @@
 	}
 
 	PrintWriter script = response.getWriter();
-	if (content.getContentTitle() == null || content.getContentDetail() == null) {
+	if (boardDTO.getContentTitle() == null || boardDTO.getContentDetail() == null) {
 		script.println("<script>alert('입력이 안된 부분이 있습니다')</script>");
 		script.println("<script>history.back()</script>");
 	} else {
-		ContentDAO contentDAO = ContentDAO.getInstance();
-		int result = contentDAO.write(content.getContentTitle(), userId, content.getContentDetail());
+		BoardDAO boardDAO = BoardDAO.getInstance();
+		int result = boardDAO.write(boardDTO.getContentTitle(), userId, boardDTO.getContentDetail());
 		if (result == -1) {
 			script.println("<script>alert('글쓰기에 실패하였습니다')</script>");
 			script.println("<script>history.back()</script>");

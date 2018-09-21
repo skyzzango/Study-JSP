@@ -145,7 +145,7 @@ public class SendPost {
 			con.setDoOutput(true);
 			con.setRequestMethod("POST");
 			con.setRequestProperty("User-Agent", "Java client");
-			con.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+			con.setRequestProperty("BoardDTO-Type", "application/x-www-form-urlencoded");
 			con.setRequestProperty("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8");
 			con.setRequestProperty("Accept-Encoding", "gzip, deflate, br");
 			con.setRequestProperty("Accept-Language", "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7");

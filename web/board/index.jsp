@@ -1,6 +1,7 @@
-<%@ page import="board.Content" %>
-<%@ page import="board.ContentDAO" %>
-<%@ page import="java.util.List" %><%--
+<%@ page import="board.BoardDTO" %>
+<%@ page import="board.BoardDAO" %>
+<%@ page import="java.util.List" %>
+<%--
   Created by IntelliJ IDEA.
   User: skyzz
   Date: 2018-09-20
@@ -19,8 +20,8 @@
 	if (request.getParameter("pageNumber") != null) {
 		pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
 	}
-	ContentDAO contentDAO = ContentDAO.getInstance();
-	List<Content> list = contentDAO.getList(pageNumber);
+	BoardDAO boardDAO = BoardDAO.getInstance();
+	List<BoardDTO> list = boardDAO.getList(pageNumber);
 %>
 
 <html lang="ko">
@@ -48,21 +49,21 @@
 			</tr>
 			</thead>
 			<tbody>
-			<% for (Content content : list) { %>
+			<% for (BoardDTO boardDTO : list) { %>
 			<tr>
-				<td><%=content.getContentNum()%>
+				<td><%=boardDTO.getContentNum()%>
 				</td>
 				<td>
-					<a href="${pageContext.request.contextPath}/board/boardView.jsp?contentNum=<%=content.getContentNum()%>">
-						<%=content.getContentTitle()%>
+					<a href="${pageContext.request.contextPath}/board/boardView.jsp?contentNum=<%=boardDTO.getContentNum()%>">
+						<%=boardDTO.getContentTitle()%>
 					</a>
 				</td>
-				<td><%=content.getContentUser()%>
+				<td><%=boardDTO.getContentUser()%>
 				</td>
 				<td><%=
-				content.getContentDate().substring(0, 11) +
-						content.getContentDate().substring(11, 13) + "시 " +
-						content.getContentDate().substring(14, 16) + "분"
+				boardDTO.getContentDate().substring(0, 11) +
+						boardDTO.getContentDate().substring(11, 13) + "시 " +
+						boardDTO.getContentDate().substring(14, 16) + "분"
 				%>
 				</td>
 			</tr>
@@ -77,7 +78,7 @@
 		   class="btn btn-success btn-arraw-left disabled">이전</a>
 		<% } %>
 
-		<% if (contentDAO.nextPage(pageNumber + 1)) { %>
+		<% if (boardDAO.nextPage(pageNumber + 1)) { %>
 		<a href="${pageContext.request.contextPath}/board/?pageNumber=<%=pageNumber + 1%>"
 		   class="btn btn-success btn-arraw-left">다음</a>
 		<% } else { %>

@@ -9,16 +9,16 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ContentDAO {
+public class BoardDAO {
 
-	private ContentDAO() { }
+	private BoardDAO() { }
 
 	private static class LazyHolder {
-		static final ContentDAO INSTANCE = new ContentDAO();
+		static final BoardDAO INSTANCE = new BoardDAO();
 	}
 
-	public static ContentDAO getInstance() {
-		return ContentDAO.LazyHolder.INSTANCE;
+	public static BoardDAO getInstance() {
+		return BoardDAO.LazyHolder.INSTANCE;
 	}
 
 	public String getDate() {
@@ -32,13 +32,13 @@ public class ContentDAO {
 				return rs.getString(1);
 			}
 		} catch (Exception e) {
-			System.out.println("Error: board.ContentDAO.getDate Failed (" + e.getMessage() + ")");
+			System.out.println("Error: board.BoardDAO.getDate Failed (" + e.getMessage() + ")");
 		}
 		return "";
 	}
 
 	public int getNext() {
-		String sql = "SELECT contentNum FROM content ORDER BY contentNum DESC";
+		String sql = "SELECT contentNum FROM board ORDER BY contentNum DESC";
 
 		try (
 				Connection conn = ConnUtil.getConnection();
@@ -49,13 +49,13 @@ public class ContentDAO {
 				return rs.getInt(1) + 1;
 			}
 		} catch (Exception e) {
-			System.out.println("Error: board.ContentDAO.getNext Failed (" + e.getMessage() + ")");
+			System.out.println("Error: board.BoardDAO.getNext Failed (" + e.getMessage() + ")");
 		}
 		return 1;
 	}
 
 	public int write(String contentTitle, String userName, String contentDetail) {
-		String sql = "INSERT INTO content VALUES(?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO board VALUES(?, ?, ?, ?, ?)";
 
 		try (
 				Connection conn = ConnUtil.getConnection();
@@ -69,14 +69,14 @@ public class ContentDAO {
 			pstmt.executeUpdate();
 			return 1;
 		} catch (Exception e) {
-			System.out.println("Error: board.ContentDAO.write Failed (" + e.getMessage() + ")");
+			System.out.println("Error: board.BoardDAO.write Failed (" + e.getMessage() + ")");
 		}
 		return -1;
 	}
 
-	public List<Content> getList(int pageNumber) {
-		List<Content> list = new ArrayList<>();
-		String sql = "SELECT * FROM content WHERE contentNum < ? ORDER BY contentNum DESC LIMIT 10";
+	public List<BoardDTO> getList(int pageNumber) {
+		List<BoardDTO> list = new ArrayList<>();
+		String sql = "SELECT * FROM board WHERE contentNum < ? ORDER BY contentNum DESC LIMIT 10";
 
 		try (
 				Connection conn = ConnUtil.getConnection();
@@ -84,22 +84,22 @@ public class ContentDAO {
 				ResultSet rs = pstmt.executeQuery()
 		) {
 			while (rs.next()) {
-				Content content = new Content();
-				content.setContentNum(rs.getInt(1));
-				content.setContentTitle(rs.getString(2));
-				content.setContentUser(rs.getString(3));
-				content.setContentDate(rs.getString(4));
-				content.setContentDetail(rs.getString(5));
-				list.add(content);
+				BoardDTO boardDTO = new BoardDTO();
+				boardDTO.setContentNum(rs.getInt(1));
+				boardDTO.setContentTitle(rs.getString(2));
+				boardDTO.setContentUser(rs.getString(3));
+				boardDTO.setContentDate(rs.getString(4));
+				boardDTO.setContentDetail(rs.getString(5));
+				list.add(boardDTO);
 			}
 		} catch (Exception e) {
-			System.out.println("Error: board.ContentDAO.getList Failed (" + e.getMessage() + ")");
+			System.out.println("Error: board.BoardDAO.getList Failed (" + e.getMessage() + ")");
 		}
 		return list;
 	}
 
 	public boolean nextPage(int pageNumber) {
-		String sql = "SELECT * FROM content WHERE contentNum < ?";
+		String sql = "SELECT * FROM board WHERE contentNum < ?";
 
 		try (
 				Connection conn = ConnUtil.getConnection();
@@ -110,13 +110,13 @@ public class ContentDAO {
 				return true;
 			}
 		} catch (Exception e) {
-			System.out.println("Error: board.ContentDAO.nextPage Failed (" + e.getMessage() + ")");
+			System.out.println("Error: board.BoardDAO.nextPage Failed (" + e.getMessage() + ")");
 		}
 		return false;
 	}
 
-	public Content getContent(int contentNum) {
-		String sql = "SELECT * FROM content WHERE contentNum = ?";
+	public BoardDTO getContent(int contentNum) {
+		String sql = "SELECT * FROM board WHERE contentNum = ?";
 
 		try (
 				Connection conn = ConnUtil.getConnection();
@@ -124,22 +124,22 @@ public class ContentDAO {
 				ResultSet rs = pstmt.executeQuery()
 		) {
 			if (rs.next()) {
-				Content content = new Content();
-				content.setContentNum(rs.getInt(1));
-				content.setContentTitle(rs.getString(2));
-				content.setContentUser(rs.getString(3));
-				content.setContentDate(rs.getString(4));
-				content.setContentDetail(rs.getString(5));
-				return content;
+				BoardDTO boardDTO = new BoardDTO();
+				boardDTO.setContentNum(rs.getInt(1));
+				boardDTO.setContentTitle(rs.getString(2));
+				boardDTO.setContentUser(rs.getString(3));
+				boardDTO.setContentDate(rs.getString(4));
+				boardDTO.setContentDetail(rs.getString(5));
+				return boardDTO;
 			}
 		} catch (Exception e) {
-			System.out.println("Error: board.ContentDAO.getContent Failed (" + e.getMessage() + ")");
+			System.out.println("Error: board.BoardDAO.getContent Failed (" + e.getMessage() + ")");
 		}
 		return null;
 	}
 
 	public int contentUpdate(int contentNum, String contentTitle, String contentDetail) {
-		String sql = "UPDATE content SET contentTitle = ?, contentDetail = ? WHERE contentNum = ?";
+		String sql = "UPDATE board SET contentTitle = ?, contentDetail = ? WHERE contentNum = ?";
 
 		try (
 				Connection conn = ConnUtil.getConnection();
@@ -151,13 +151,13 @@ public class ContentDAO {
 			pstmt.executeUpdate();
 			return 1;
 		} catch (Exception e) {
-			System.out.println("Error: board.ContentDAO.contentUpdate Failed (" + e.getMessage() + ")");
+			System.out.println("Error: board.BoardDAO.contentUpdate Failed (" + e.getMessage() + ")");
 		}
 		return -1;
 	}
 
 	public int contentDelete(int contentNum) {
-		String sql = "DELETE FROM content WHERE contentNum = ?";
+		String sql = "DELETE FROM board WHERE contentNum = ?";
 
 		try (
 				Connection conn = ConnUtil.getConnection();
@@ -165,7 +165,7 @@ public class ContentDAO {
 		) {
 			return pstmt.executeUpdate();
 		} catch (Exception e) {
-			System.out.println("Error: board.ContentDAO.contentDelete Failed (" + e.getMessage() + ")");
+			System.out.println("Error: board.BoardDAO.contentDelete Failed (" + e.getMessage() + ")");
 		}
 		return -1;
 	}

@@ -1,6 +1,7 @@
-<%@ page import="board.Content" %>
-<%@ page import="board.ContentDAO" %>
-<%@ page import="java.io.PrintWriter" %><%--
+<%@ page import="board.BoardDTO" %>
+<%@ page import="board.BoardDAO" %>
+<%@ page import="java.io.PrintWriter" %>
+<%--
   Created by IntelliJ IDEA.
   User: skyzz
   Date: 2018-09-20
@@ -24,7 +25,7 @@
 		script.println("<script>alert('유효하지 않는 게시물입니다')</script>");
 		script.println("<script>location.href = '/board/'</script>");
 	}
-	Content content = ContentDAO.getInstance().getContent(contentNum);
+	BoardDTO boardDTO = BoardDAO.getInstance().getContent(contentNum);
 %>
 
 <html lang="ko">
@@ -47,27 +48,27 @@
 				<tr>
 					<td>글 제목</td>
 					<!-- 글 제목 악성 스크립트 공격 막기 위해서 -->
-					<td><%= content.getContentTitle().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br>") %></td>
+					<td><%= boardDTO.getContentTitle().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br>") %></td>
 				</tr>
 				<tr>
 					<td>작성자</td>
-					<td><%= content.getContentUser() %></td>
+					<td><%= boardDTO.getContentUser() %></td>
 				</tr>
 				<tr>
 					<td>작성일자</td>
-					<td><%= content.getContentDate().substring(0, 11) + content.getContentDate().substring(11, 13) + "시 " + content.getContentDate().substring(14, 16) + "분 " %></td>
+					<td><%= boardDTO.getContentDate().substring(0, 11) + boardDTO.getContentDate().substring(11, 13) + "시 " + boardDTO.getContentDate().substring(14, 16) + "분 " %></td>
 				</tr>
 				<tr>
 					<td style="height: 400px">글 내용</td>
 					<!-- 출력 시 공백이나 < > 줄바꿈 우리 눈에 보여주기 하기 위해서(html 태그로 인식해서 안되기 때매) -->
-					<td><%= content.getContentDetail().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br>") %></td>
+					<td><%= boardDTO.getContentDetail().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br>") %></td>
 				</tr>
 			</tbody>
 		</table>
 
 		<!-- 목록으로 돌아가기와 작성자이면 수정할 수 있게 하기 -->
 		<a href = "${pageContext.request.contextPath}/board/" class="btn btn-primary">목록</a>
-		<% if (userId != null && userId.equals(content.getContentUser())) { %>
+		<% if (userId != null && userId.equals(boardDTO.getContentUser())) { %>
 		<a href="${pageContext.request.contextPath}/board/boardUpdate.jsp?contentNum=<%=contentNum %>" class="btn btn-info">수정</a>
 		<a onclick="return confirm('정말로 삭제 하시겠습니까?')" href="boardDeleteProc.jsp?contentNum=<%=contentNum %>" class="btn btn-danger">삭제</a>
 		<% } %>
