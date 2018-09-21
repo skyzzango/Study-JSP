@@ -6,25 +6,11 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="952f741a-d9b9-459d-9612-7ee3b7801ad5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/web/WEB-INF/lib/cos.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/WEB-INF/lib/tomcat-dbcp.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/board/boardDeleteProc.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/board/boardUpdate.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/board/boardUpdateProc.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/board/fileUploadAction.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Study_JSP_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Study_JSP_war_exploded.xml" afterDir="false" />
+    <list default="true" id="952f741a-d9b9-459d-9612-7ee3b7801ad5" name="Default Changelist" comment="설정 파일 삭제 -&gt; work-home">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dictionaries/skyzz.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Study-JSP.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Study-JSP.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/board/ContentDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/board/ContentDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/user/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/UserDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/board/boardView.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/board/boardView.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/board/boardWrite.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/board/boardWrite.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/board/boardWriteProc.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/board/boardWriteProc.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/board/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/board/index.jsp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -83,22 +69,24 @@
     <session id="1328626978">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
+          <entry key="project.closed" value="4" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.12" value="1" />
+          <entry key="project.open.time.14" value="1" />
           <entry key="project.open.time.6" value="1" />
-          <entry key="project.opened" value="3" />
+          <entry key="project.opened" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="content" value="4" />
           <entry key="css" value="2" />
+          <entry key="gitignore" value="1" />
           <entry key="hbs" value="2" />
           <entry key="html" value="1" />
           <entry key="java" value="21" />
           <entry key="js" value="2" />
-          <entry key="jsp" value="62" />
+          <entry key="jsp" value="63" />
           <entry key="sql" value="3" />
           <entry key="user" value="19" />
           <entry key="vmoptions" value="1" />
@@ -109,9 +97,10 @@
         <counts>
           <entry key="CSS" value="2" />
           <entry key="Database Element" value="23" />
+          <entry key="Git file" value="1" />
           <entry key="HTML" value="1" />
           <entry key="JAVA" value="21" />
-          <entry key="JSP" value="62" />
+          <entry key="JSP" value="63" />
           <entry key="JavaScript" value="2" />
           <entry key="PLAIN_TEXT" value="3" />
           <entry key="SQL" value="1" />
@@ -125,6 +114,7 @@
           <entry key="java" value="2304" />
           <entry key="jsp" value="5971" />
           <entry key="sql" value="255" />
+          <entry key="txt" value="21" />
           <entry key="vmoptions" value="13" />
         </counts>
       </usages-collector>
@@ -133,7 +123,7 @@
           <entry key="HTML" value="16" />
           <entry key="JAVA" value="2304" />
           <entry key="JSP" value="5971" />
-          <entry key="PLAIN_TEXT" value="13" />
+          <entry key="PLAIN_TEXT" value="34" />
           <entry key="SQL" value="78" />
           <entry key="Scratch" value="177" />
         </counts>
@@ -155,71 +145,7 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/board/index.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="11" selection-start-line="11" selection-end-line="11" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/web/board/boardWrite.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/board/boardWriteProc.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/board/boardView.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="576">
-              <caret line="75" selection-start-line="75" selection-end-line="75" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/board/boardUpdate.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="11" selection-start-line="11" selection-end-line="11" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/board/boardUpdateProc.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="11" selection-start-line="11" selection-end-line="11" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/board/boardDeleteProc.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="10" selection-start-line="10" selection-end-line="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -274,6 +200,7 @@
         <option value="$PROJECT_DIR$/web/board/fileUploadAction.jsp" />
         <option value="$PROJECT_DIR$/web/board/boardWriteProc.jsp" />
         <option value="$PROJECT_DIR$/web/board/boardWrite.jsp" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -364,14 +291,17 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="Study-JSP" type="b2602c69:ProjectViewProjectNode" />
               <item name="Study-JSP" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Study-JSP" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Study-JSP" type="462c0819:PsiDirectoryNode" />
+              <item name=".idea" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Study-JSP" type="b2602c69:ProjectViewProjectNode" />
@@ -479,15 +409,19 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="AndroidView" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="GO_FMT" value="true" />
     <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
+    <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1537466217496" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1537466323323" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="go.gopath.indexing.explicitly.defined" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../JspExample01" />
@@ -584,12 +518,21 @@
       <updated>1537427337128</updated>
       <workItem from="1537427339116" duration="53000" />
       <workItem from="1537427441815" duration="22432000" />
-      <workItem from="1537463818441" duration="2392000" />
+      <workItem from="1537463818441" duration="2521000" />
+      <workItem from="1537505315528" duration="184000" />
     </task>
+    <task id="LOCAL-00001" summary="회원 기능 마무리,  …&#10;게시판 기능 마무리 -&gt; work-home">
+      <created>1537466291801</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1537466291801</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32287000" />
+    <option name="totallyTimeSpent" value="32600000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -602,9 +545,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.10773333" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.10773333" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -616,13 +558,13 @@
       <window_info id="Web" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3296582" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49866667" visible="true" weight="0.32855567" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49866667" weight="0.32855567" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32962137" />
       <window_info anchor="bottom" id="Application Servers" order="7" weight="0.32962137" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32962137" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32855567" />
       <window_info anchor="bottom" id="CheckStyle" order="9" weight="0.32962137" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50133336" side_tool="true" weight="0.32855567" />
       <window_info anchor="bottom" id="SonarLint" order="11" weight="0.32962137" />
@@ -657,6 +599,8 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
+    <MESSAGE value="회원 기능 마무리,  …&#10;게시판 기능 마무리 -&gt; work-home" />
+    <option name="LAST_COMMIT_MESSAGE" value="회원 기능 마무리,  …&#10;게시판 기능 마무리 -&gt; work-home" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$USER_HOME$/AppData/Local/JetBrains/Toolbox/apps/IDEA-U/ch-0/182.4505.22.vmoptions" />
@@ -702,9 +646,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="178">
           <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -719,28 +660,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="24">
           <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
-          <folding>
-            <element signature="e#212#213#0" expanded="true" />
-            <element signature="e#236#237#0" expanded="true" />
-            <element signature="e#282#283#0" expanded="true" />
-            <element signature="e#317#318#0" expanded="true" />
-            <element signature="e#353#354#0" expanded="true" />
-            <element signature="e#379#380#0" expanded="true" />
-            <element signature="e#432#433#0" expanded="true" />
-            <element signature="e#471#472#0" expanded="true" />
-            <element signature="e#506#507#0" expanded="true" />
-            <element signature="e#531#532#0" expanded="true" />
-            <element signature="e#582#583#0" expanded="true" />
-            <element signature="e#619#620#0" expanded="true" />
-            <element signature="e#654#655#0" expanded="true" />
-            <element signature="e#679#680#0" expanded="true" />
-            <element signature="e#730#731#0" expanded="true" />
-            <element signature="e#767#768#0" expanded="true" />
-            <element signature="e#804#805#0" expanded="true" />
-            <element signature="e#831#832#0" expanded="true" />
-            <element signature="e#886#887#0" expanded="true" />
-            <element signature="e#927#928#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -854,6 +773,11 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/sample/error-404.html" />
+    <entry file="file://$PROJECT_DIR$/web/casper/assets/js/infinitescroll.js" />
+    <entry file="file://$PROJECT_DIR$/web/casper/index.hbs" />
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/web/board/index.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
@@ -861,20 +785,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/casper/assets/js/infinitescroll.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/casper/index.hbs">
+    <entry file="file://$PROJECT_DIR$/web/board/boardWriteProc.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="7" column="41" lean-forward="true" selection-start-line="7" selection-start-column="41" selection-end-line="7" selection-end-column="41" />
+        <state relative-caret-position="840">
+          <caret line="35" selection-start-line="35" selection-end-line="35" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/board/boardUpdateProc.jsp">
+    <entry file="file://$PROJECT_DIR$/web/board/boardView.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        <state relative-caret-position="1800">
+          <caret line="75" selection-start-line="75" selection-end-line="75" />
         </state>
       </provider>
     </entry>
@@ -885,20 +806,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/board/boardView.jsp">
+    <entry file="file://$PROJECT_DIR$/web/board/boardUpdateProc.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="576">
-          <caret line="75" selection-start-line="75" selection-end-line="75" />
+        <state relative-caret-position="264">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/board/fileUploadAction.jsp">
+    <entry file="file://$PROJECT_DIR$/web/board/boardWrite.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        <state relative-caret-position="216">
+          <caret line="9" column="4" lean-forward="true" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
         </state>
       </provider>
     </entry>
@@ -909,17 +827,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/board/boardWriteProc.jsp">
+    <entry file="file://$PROJECT_DIR$/web/board/fileUploadAction.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
+        <state relative-caret-position="240">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/board/boardWrite.jsp">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+        <state relative-caret-position="240">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
         </state>
       </provider>
     </entry>
