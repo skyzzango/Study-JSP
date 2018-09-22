@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+<%@include file="/partials/loginCheck.jsp"%>
 <html lang="ko">
 <head>
 	<%@include file="/partials/head.jsp" %>

@@ -49,7 +49,7 @@
 					<div class="card-header bg-light">
 						<div class="row">
 							<div class="col-8 text-left">
-								<img src="./contentPicture/<%=content.getPicture()%>" class="img-circle" width="32px"
+								<img src="<%=content.getPicture()%>" class="img-circle" width="32px"
 								     height="27px">&nbsp;<%=content.getWriteId()%>&nbsp;
 								<small>
 									<%=content.getWriteDate()%>

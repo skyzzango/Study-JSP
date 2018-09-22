@@ -1,6 +1,6 @@
+<%@ page import="content.ContentDAO" %>
 <%@ page import="content.ContentDTO" %>
-<%@ page import="java.util.List" %>
-<%@ page import="content.ContentDAO" %><%--
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: skyzz
   Date: 2018-09-21
@@ -37,7 +37,7 @@
 					<div class="card-header bg-light">
 						<div class="row">
 							<div class="col-8 text-left">
-								<img src="./contentPicture/<%=content.getPicture()%>" class="img-circle" width="32px"
+								<img src="<%=content.getPicture()%>" class="img-circle" width="32px"
 								     height="27px">&nbsp;<%=content.getWriteId()%>&nbsp;
 								<small>
 									<%=content.getWriteDate()%>
@@ -49,12 +49,12 @@
 					<div class="card-body">
 						<div class="row">
 							<div class="col-3">
-								<img src="./uploadImage/<%=content.getFileRealName()%>" width="150px" height="100px">
+								<img src="/uploadImage/<%=content.getFileRealName()%>" width="150px" height="100px">
 							</div>
 							<div class="col-9">
-								<h5 class="card-title">
-									<%=content.getTitle()%>
-								</h5>
+								<a class="card-title"
+								   href="./contentDetailView.jsp?title=<%=content.getTitle()%>"><%=content.getTitle()%>
+								</a>
 								<p class="card-text">
 									<%=content.getContent()%>
 								</p>
@@ -63,7 +63,7 @@
 										금액
 										<span style="color: red;">
 											<%=content.getCoinAmount()%>
-									</span>
+										</span>
 										추천
 										<span style="color: red;">
 											<%=content.getLikeAmount()%>

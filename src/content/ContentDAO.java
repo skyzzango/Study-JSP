@@ -11,7 +11,8 @@ import java.util.List;
 
 public class ContentDAO {
 
-	private ContentDAO() { }
+	private ContentDAO() {
+	}
 
 	private static class LazyHolder {
 		static final ContentDAO INSTANCE = new ContentDAO();
@@ -31,29 +32,7 @@ public class ContentDAO {
 				ResultSet rs = pstmt.executeQuery()
 		) {
 			while (rs.next()) {
-				ContentDTO content = new ContentDTO();
-				content.setPicture(rs.getString("picture"));
-				content.setWriteId(rs.getString("writeId"));
-
-				// 시간을 오전 오후로 변환하여 표시
-				int date = Integer.parseInt(rs.getString("writeDate").substring(11, 13));
-				String dateType = "오전";
-				if (Integer.parseInt(rs.getString("writeDate").substring(11, 13)) >= 12) {
-					dateType = "오후";
-					date -= 12;
-				}
-
-				content.setWriteDate(rs.getString("writeDate").substring(0, 11) + " " + dateType + " " + date + "시 " + rs.getString("writeDate").substring(14, 16) + "분");
-				content.setFileName(rs.getString("fileName"));
-				content.setFileRealName(rs.getString("fileRealName"));
-				content.setTitle(rs.getString("title"));
-				content.setContent(rs.getString("content"));
-				content.setCoinAmount(rs.getInt("coinAmount"));
-				content.setLikeAmount(rs.getInt("likeAmount"));
-				content.setCommentAmount(rs.getInt("commentAmount"));
-				content.setReportAmount(rs.getInt("reportAmount"));
-
-				contentList.add(content);
+				contentList.add(convertDBtoClass(rs));
 			}
 		} catch (Exception e) {
 			System.out.println("Error: content.ContentDAO.getContentList Failed (" + e.getMessage() + ")");
@@ -63,30 +42,17 @@ public class ContentDAO {
 
 	public List<ContentDTO> getSearchList(String search) {
 		List<ContentDTO> searchList = new ArrayList<>();
-		String sql = "SELECT * FROM content WHERE CONCAT(writeId, title, content) LIKE CONCAT('%', ?, '%') ORDER BY writeDate DESC";
+		String sql = "SELECT * FROM content WHERE CONCAT(writeId, title, content) LIKE CONCAT('%', ?, '%') ORDER BY " +
+				"writeDate DESC";
 
 		try (
 				Connection conn = ConnUtil.getConnection();
-				PreparedStatement pstmt = setPreparedStatement(conn, sql, (search));
+				PreparedStatement pstmt = setPreparedStatement(conn.prepareStatement(sql), search);
 				ResultSet rs = pstmt.executeQuery()
 		) {
 			System.out.println("getSearchList sql: " + pstmt);
 			while (rs.next()) {
-				ContentDTO content = new ContentDTO();
-				content.setPicture(rs.getString("picture"));
-				content.setWriteId(rs.getString("writeDate"));
-
-				content.setWriteDate(rs.getString("writeDate"));
-				content.setFileName(rs.getString("fileName"));
-				content.setFileRealName(rs.getString("fileRealName"));
-				content.setTitle(rs.getString("title"));
-				content.setContent(rs.getString("content"));
-				content.setCoinAmount(rs.getInt("coinAmount"));
-				content.setLikeAmount(rs.getInt("likeAmount"));
-				content.setCommentAmount(rs.getInt("commentAmount"));
-				content.setReportAmount(rs.getInt("reportAmount"));
-				searchList.add(content);
-				System.out.println("content: " + content);
+				searchList.add(convertDBtoClass(rs));
 			}
 		} catch (Exception e) {
 			System.out.println("Error: content.ContentDAO.getSearchList Failed (" + e.getMessage() + ")");
@@ -94,7 +60,7 @@ public class ContentDAO {
 		return searchList;
 	}
 
-	public int upload(ContentDTO contentDTO) {
+	public int writeContent(ContentDTO contentDTO) {
 		String sql = "INSERT INTO content VALUE (null, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())";
 
 		try (
@@ -113,14 +79,61 @@ public class ContentDAO {
 			pstmt.setInt(10, contentDTO.getReportAmount());
 			return pstmt.executeUpdate();
 		} catch (Exception e) {
-			System.out.println("Error: content.ContentDAO.upload Failed (" + e.getMessage() + ")");
+			System.out.println("Error: content.ContentDAO.writeContent Failed (" + e.getMessage() + ")");
 		}
 		return -1;
 	}
 
+	public ContentDTO getContent(String title) {
+		String sql = "SELECT * FROM content WHERE title = ?";
 
-	private PreparedStatement setPreparedStatement(Connection conn, String sql, Object status) throws SQLException {
-		PreparedStatement pstmt = conn.prepareStatement(sql);
+		try (
+				Connection conn = ConnUtil.getConnection();
+				PreparedStatement pstmt = setPreparedStatement(conn.prepareStatement(sql), title);
+				ResultSet rs = pstmt.executeQuery()
+		) {
+			if (rs.next()) {
+				return convertDBtoClass(rs);
+			}
+		} catch (Exception e) {
+			System.out.println("Error: content.ContentDAO.getContent Failed (" + e.getMessage() + ")");
+		}
+		return null;
+	}
+
+	private ContentDTO convertDBtoClass(ResultSet rs) throws SQLException {
+		ContentDTO content = new ContentDTO();
+		content.setPicture(rs.getString("picture"));
+		content.setWriteId(rs.getString("writeId"));
+
+		// 시간을 오전 오후로 변환하여 표시
+		int date = Integer.parseInt(rs.getString("writeDate").substring(11, 13));
+		String dateType = "오전";
+		if (Integer.parseInt(rs.getString("writeDate").substring(11, 13)) >= 12) {
+			dateType = "오후";
+			date -= 12;
+		}
+
+		content.setWriteDate(rs.getString("writeDate").substring(0, 11) + " " + dateType + " " + date + "시 " + rs.getString("writeDate").substring(14, 16) + "분");
+		content.setFileName(rs.getString("fileName"));
+		content.setFileRealName(rs.getString("fileRealName"));
+		content.setTitle(checkBadScript(rs.getString("title")));
+		content.setContent(checkBadScript(rs.getString("content")));
+		content.setCoinAmount(rs.getInt("coinAmount"));
+		content.setLikeAmount(rs.getInt("likeAmount"));
+		content.setCommentAmount(rs.getInt("commentAmount"));
+		content.setReportAmount(rs.getInt("reportAmount"));
+		return content;
+	}
+
+	private String checkBadScript(String str) {
+		return str.replaceAll(" ", "&nbsp;")
+				.replaceAll("<", "&lt;")
+				.replaceAll(">", "&gt;")
+				.replaceAll("\n", "<br>");
+	}
+
+	private PreparedStatement setPreparedStatement(PreparedStatement pstmt, Object status) throws SQLException {
 		if (status instanceof String) {
 			pstmt.setString(1, (String) status);
 		} else {

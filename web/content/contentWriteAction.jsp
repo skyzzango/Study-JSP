@@ -1,7 +1,8 @@
 <%@ page import="com.oreilly.servlet.MultipartRequest" %>
 <%@ page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy" %>
 <%@ page import="content.ContentDAO" %>
-<%@ page import="content.ContentDTO" %><%--
+<%@ page import="content.ContentDTO" %>
+<%@ page import="user.UserDAO" %><%--
   Created by IntelliJ IDEA.
   User: skyzz
   Date: 2018-09-21
@@ -15,7 +16,7 @@
 	ContentDTO content = new ContentDTO();
 
 	content.setWriteId((String) session.getAttribute("userId"));
-	content.setPicture("/uploadImage/preloader.gif");
+	content.setPicture(UserDAO.getInstance().getUserPicture((String) session.getAttribute("userId")));
 
 	// 폴더 경로 설정
 	String uploadDir = this.getClass().getResource("").getPath();
@@ -49,12 +50,15 @@
 	content.setReportAmount(7);
 
 	// 디비에 업로드 메소드
-	ContentDAO.getInstance().upload(content);
-
+	int result = ContentDAO.getInstance().writeContent(content);
+	if (result == 1) {
+		response.getWriter().println("<script>alert('글 등록 완료')</script>");
+		response.getWriter().println("<script>location.href='./'</script>");
+	} else {
+		response.getWriter().println("<script>alert('글 등록 실패')</script>");
+		response.getWriter().println("<script>location.href='./'</script>");
+	}
 %>
-
-<script>alert('글쓰기 성공');</script>
-<script>location.href='./';</script>
 
 <html lang="ko">
 <head>

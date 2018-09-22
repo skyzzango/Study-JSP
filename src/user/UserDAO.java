@@ -2,10 +2,13 @@ package user;
 
 import util.ConnUtil;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Arrays;
+import java.util.Collections;
 
 public class UserDAO {
 
@@ -20,8 +23,7 @@ public class UserDAO {
 		return LazyHolder.INSTANCE;
 	}
 
-	private PreparedStatement setPreparedStatement(Connection conn, String sql, String state) throws SQLException {
-		PreparedStatement pstmt = conn.prepareStatement(sql);
+	private PreparedStatement setPreparedStatement(PreparedStatement pstmt, String state) throws SQLException {
 		pstmt.setString(1, state);
 		return pstmt;
 	}
@@ -31,7 +33,7 @@ public class UserDAO {
 
 		try (
 				Connection conn = ConnUtil.getConnection();
-				PreparedStatement pstmt = setPreparedStatement(conn, sql, userId);
+				PreparedStatement pstmt = setPreparedStatement(conn.prepareStatement(sql), userId);
 				ResultSet rs = pstmt.executeQuery()
 		) {
 			if (rs.next()) { // next() 하여 데이터가 있다면
@@ -45,11 +47,14 @@ public class UserDAO {
 		} catch (Exception e) {
 			System.out.println("Error: user.UserDAO.login Failed (" + e.getMessage() + ")");
 		}
-		return -1; // DB 작동 오류
+		return -2; // DB 오류
 	}
 
 	public int register(UserVo userVo) {
-		String sql = "INSERT INTO user VALUES(?, ?, ?)";
+		File[] files = new File("C:\\Users\\skyzz\\IdeaProjects\\Study-JSP\\web\\userImage\\cat-power").listFiles();
+		assert files != null;
+		Collections.shuffle(Arrays.asList(files));
+		String sql = "INSERT INTO user VALUES(?, ?, ?, " + files[0] + ")";
 
 		try (
 				Connection conn = ConnUtil.getConnection();
@@ -62,8 +67,26 @@ public class UserDAO {
 			return 1; // 정상 실행
 		} catch (Exception e) {
 			System.out.println("Error: user.UserDAO.register Failed (" + e.getMessage() + ")");
+
 		}
-		return -1; // DB 작동 오류
+		return -1; // DB 오류
+	}
+
+	public String getUserPicture(String userId) {
+		String sql = "SELECT userPicture FROM user WHERE userId = ?";
+
+		try (
+				Connection conn = ConnUtil.getConnection();
+				PreparedStatement pstmt = setPreparedStatement(conn.prepareStatement(sql), userId);
+				ResultSet rs = pstmt.executeQuery()
+				) {
+			if (rs.next()) {
+				return rs.getString("userPicture");
+			}
+		} catch (Exception e) {
+			System.out.println("Error: user.UserDAO.getUserPicture Failed (" + e.getMessage() + ")");
+		}
+		return null;
 	}
 
 }

@@ -30,7 +30,7 @@
 			script.println("<script>history.back()</script>");
 		}
 	}
-	script .flush();
+	script.flush();
 %>
 
 <html lang="ko">
