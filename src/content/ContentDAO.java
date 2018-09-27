@@ -50,7 +50,6 @@ public class ContentDAO {
 				PreparedStatement pstmt = setPreparedStatement(conn.prepareStatement(sql), search);
 				ResultSet rs = pstmt.executeQuery()
 		) {
-			System.out.println("getSearchList sql: " + pstmt);
 			while (rs.next()) {
 				searchList.add(convertDBtoClass(rs));
 			}
@@ -84,12 +83,12 @@ public class ContentDAO {
 		return -1;
 	}
 
-	public ContentDTO getContent(String title) {
-		String sql = "SELECT * FROM content WHERE title = ?";
+	public ContentDTO getContent(String contentNum) {
+		String sql = "SELECT * FROM content WHERE contentNum = ?";
 
 		try (
 				Connection conn = ConnUtil.getConnection();
-				PreparedStatement pstmt = setPreparedStatement(conn.prepareStatement(sql), title);
+				PreparedStatement pstmt = setPreparedStatement(conn.prepareStatement(sql), contentNum);
 				ResultSet rs = pstmt.executeQuery()
 		) {
 			if (rs.next()) {
@@ -101,8 +100,24 @@ public class ContentDAO {
 		return null;
 	}
 
+	public int deleteContent(String contentNum) {
+		String sql = "DELETE FROM content WHERE contentNum = ?";
+
+		try (
+				Connection conn = ConnUtil.getConnection();
+				PreparedStatement pstmt = setPreparedStatement(conn.prepareStatement(sql), contentNum)
+		) {
+			System.out.println(pstmt);
+			return pstmt.executeUpdate();
+		} catch (Exception e) {
+			System.out.println("Error: content.ContentDAO.deleteContent Failed (" + e.getMessage() + ")");
+		}
+		return -1;
+	}
+
 	private ContentDTO convertDBtoClass(ResultSet rs) throws SQLException {
 		ContentDTO content = new ContentDTO();
+		content.setContentNum(rs.getInt("contentNum"));
 		content.setPicture(rs.getString("picture"));
 		content.setWriteId(rs.getString("writeId"));
 

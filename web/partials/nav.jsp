@@ -17,7 +17,8 @@
 	<div class="collapse navbar-collapse" id="navbarsExampleDefault">
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item active">
-				<a class="nav-link" href="${pageContext.request.contextPath}/">Home <span class="sr-only">(current)</span></a>
+				<a class="nav-link" href="${pageContext.request.contextPath}/">Home <span
+						class="sr-only">(current)</span></a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link disabled" href="#">Link</a>
@@ -26,7 +27,8 @@
 				<a class="nav-link disabled" href="#">Disabled</a>
 			</li>
 			<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+				<a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown"
+				   aria-haspopup="true" aria-expanded="false">Dropdown</a>
 				<div class="dropdown-menu" aria-labelledby="dropdown01">
 					<a class="dropdown-item" href="${pageContext.request.contextPath}/board/">기본게시판</a>
 					<a class="dropdown-item" href="${pageContext.request.contextPath}/content/">파일 게시판</a>
@@ -43,10 +45,13 @@
 			<% } %>
 			<button onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Sign Up</button>
 		</div>
-		<form class="form-inline" action="${pageContext.request.contextPath}/content/searchIndex.jsp" method="get">
+
+		<form class="form-inline my-2 my-lg-0" action="${pageContext.request.contextPath}/content/searchIndex.jsp"
+		      method="get">
 			<input class="form-control" name="search" type="search" placeholder="Search" aria-label="Search">
 			<button class="btn btn-outline-success" type="submit">Search</button>
 		</form>
+
 	</div>
 </nav>
 

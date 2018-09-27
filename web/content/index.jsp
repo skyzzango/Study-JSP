@@ -28,11 +28,11 @@
 
 	<div class="starter-template">
 		<h1>게시물 목록 보기 페이지</h1><br>
-		<%@include file="nav.jsp" %>
 
-		<% for (ContentDTO content : contentList) { %>
 		<div class="row">
 			<div class="col-lg-9">
+				<%@include file="nav.jsp" %>
+				<% for (ContentDTO content : contentList) { %>
 				<div class="card bg-light mt-3">
 					<div class="card-header bg-light">
 						<div class="row">
@@ -53,7 +53,7 @@
 							</div>
 							<div class="col-9">
 								<a class="card-title"
-								   href="./contentDetailView.jsp?title=<%=content.getTitle()%>"><%=content.getTitle()%>
+								   href="./contentDetailView.jsp?contentNum=<%=content.getContentNum()%>"><%=content.getTitle()%>
 								</a>
 								<p class="card-text">
 									<%=content.getContent()%>
@@ -78,18 +78,19 @@
 										</span>
 									</div>
 									<div class="col-3 text-right">
-										<a onclick="return confirm('추천 하시겠습니까?')" href="./likeAction.jsp?evaluationId=">추천</a>
-										<a onclick="return confirm('신고 하시겠습니까?')" href="./likeAction.jsp?evaluationId=">신고</a>
+										<a onclick="return confirm('추천 하시겠습니까?')"
+										   href="./likeAction.jsp?evaluationId=">추천</a>
+										<a onclick="return confirm('신고 하시겠습니까?')"
+										   href="./likeAction.jsp?evaluationId=">신고</a>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
+				<% } %>
 			</div>
 		</div>
-		<% } %>
-
 	</div>
 
 

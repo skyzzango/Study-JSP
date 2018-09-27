@@ -20,7 +20,6 @@
 
 		<ul class="nav justify-content-end">
 			<li class="nav-item"><a class="nav-link text-white" href="./contentWrite.jsp">글쓰기</a></li>
-			<li class="nav-item"><a class="nav-link text-white disabled" href="#">로그인+회원가입</a></li>
 		</ul>
 	</div>
 </nav>

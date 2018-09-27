@@ -1,6 +1,7 @@
 package content;
 
 public class ContentDTO {
+	private int contentNum;
 	private String picture;
 	private String writeId;
 	private String fileName;
@@ -29,6 +30,14 @@ public class ContentDTO {
 		this.commentAmount = commentAmount;
 		this.reportAmount = reportAmount;
 		this.writeDate = writeDate;
+	}
+
+	public int getContentNum() {
+		return contentNum;
+	}
+
+	public void setContentNum(int contentNum) {
+		this.contentNum = contentNum;
 	}
 
 	public String getPicture() {

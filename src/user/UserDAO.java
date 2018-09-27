@@ -51,10 +51,13 @@ public class UserDAO {
 	}
 
 	public int register(UserVo userVo) {
-		File[] files = new File("C:\\Users\\skyzz\\IdeaProjects\\Study-JSP\\web\\userImage\\cat-power").listFiles();
+		File[] files = new File("C:/Users/skyzz/IdeaProjects/Study-JSP/web/userImage/cat-power").listFiles();
 		assert files != null;
 		Collections.shuffle(Arrays.asList(files));
-		String sql = "INSERT INTO user VALUES(?, ?, ?, " + files[0] + ")";
+		String path = files[0].toString()
+				.replaceAll("\\\\", "/")
+				.replaceAll("C:/Users/skyzz/IdeaProjects/Study-JSP/web", "");
+		String sql = "INSERT INTO user VALUES(?, ?, ?, ?)";
 
 		try (
 				Connection conn = ConnUtil.getConnection();
@@ -63,6 +66,7 @@ public class UserDAO {
 			pstmt.setString(1, userVo.getUserId());
 			pstmt.setString(2, userVo.getUserPw());
 			pstmt.setString(3, userVo.getUserName());
+			pstmt.setString(4, path);
 			pstmt.executeUpdate();
 			return 1; // 정상 실행
 		} catch (Exception e) {
